@@ -178,7 +178,11 @@ if (isset($_GET['info'])) {
         </div>
 
         <footer>
-            <a href="?info">View full phpinfo()</a>
+            <a href="login.php">Login</a>
+            <span style="color: #2d3548; margin: 0 4px;">|</span>
+            <a href="home.php">Server Settings</a>
+            <span style="color: #2d3548; margin: 0 4px;">|</span>
+            <a href="?info">phpinfo()</a>
         </footer>
     </div>
 </body>
