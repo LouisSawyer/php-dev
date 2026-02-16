@@ -1,3 +1,8 @@
 mysql-data/
 .env
 *.log
+vendor/
+.idea/
+.vscode/
+node_modules/
+*.cache

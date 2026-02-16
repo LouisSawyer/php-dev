@@ -16,4 +16,6 @@ try {
     echo "<p style='color:red;'>MySQL connection failed: " . htmlspecialchars($e->getMessage()) . "</p>";
 }
 
-phpinfo();
+if (isset($_GET['info'])) {
+    phpinfo();
+}
