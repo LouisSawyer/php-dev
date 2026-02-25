@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/db.php';
+requireLogin();
 
 $host = getenv('MYSQL_HOST') ?: 'mysql';
 $db = getenv('MYSQL_DATABASE') ?: 'app';
@@ -33,13 +35,12 @@ if (isset($_GET['info'])) {
             background: #0f1117;
             color: #e1e4e8;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            padding: 40px 20px;
         }
         .container {
             max-width: 720px;
             width: 100%;
+            margin: 40px auto;
+            padding: 0 20px;
         }
         header {
             text-align: center;
@@ -139,6 +140,7 @@ if (isset($_GET['info'])) {
     </style>
 </head>
 <body>
+    <?php include __DIR__ . '/nav.php'; ?>
     <div class="container">
         <header>
             <h1>PHP Dev Environment</h1>
@@ -178,10 +180,6 @@ if (isset($_GET['info'])) {
         </div>
 
         <footer>
-            <a href="login.php">Login</a>
-            <span style="color: #2d3548; margin: 0 4px;">|</span>
-            <a href="home.php">Server Settings</a>
-            <span style="color: #2d3548; margin: 0 4px;">|</span>
             <a href="?info">phpinfo()</a>
         </footer>
     </div>

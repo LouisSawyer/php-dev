@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/db.php';
+requireLogin();
 
 $message = '';
 $error = '';
@@ -41,9 +42,6 @@ try {
             background: #0f1117;
             color: #e1e4e8;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 40px 20px;
         }
         .card {
@@ -54,6 +52,7 @@ try {
             max-width: 520px;
             width: 100%;
             text-align: center;
+            margin: 0 auto;
         }
         h1 { font-size: 1.4rem; margin-bottom: 20px; color: #f0f3f6; }
         .success {
@@ -90,6 +89,7 @@ try {
     </style>
 </head>
 <body>
+    <?php include __DIR__ . '/nav.php'; ?>
     <div class="card">
         <h1>Database Setup</h1>
         <?php if ($error): ?>

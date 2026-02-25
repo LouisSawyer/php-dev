@@ -55,11 +55,11 @@ function formatBytes($bytes): string
             background: #0f1117;
             color: #e1e4e8;
             min-height: 100vh;
-            padding: 40px 20px;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
+            padding: 32px 20px 40px;
         }
         .top-bar {
             display: flex;
@@ -173,13 +173,10 @@ function formatBytes($bytes): string
     </style>
 </head>
 <body>
+    <?php include __DIR__ . '/nav.php'; ?>
     <div class="container">
         <div class="top-bar">
             <h1>Server Dashboard</h1>
-            <div class="user-info">
-                <span class="greeting">Hello, <strong><?= $username ?></strong></span>
-                <a href="logout.php">Logout</a>
-            </div>
         </div>
 
         <div class="card">
@@ -254,6 +251,7 @@ function formatBytes($bytes): string
 
         <footer>
             <a href="index.php">Dashboard</a>
+            <a href="users.php">User Management</a>
             <a href="index.php?info">phpinfo()</a>
         </footer>
     </div>
