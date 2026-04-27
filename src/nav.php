@@ -82,6 +82,8 @@
             <a href="index.php" <?= $currentPage === 'index.php' ? 'class="nav-active"' : '' ?>>Dashboard</a>
             <a href="home.php" <?= $currentPage === 'home.php' ? 'class="nav-active"' : '' ?>>Server</a>
             <a href="users.php" <?= $currentPage === 'users.php' ? 'class="nav-active"' : '' ?>>Users</a>
+            <a href="query.php" <?= $currentPage === 'query.php' ? 'class="nav-active"' : '' ?>>Query</a>
+            <a href="logs.php" <?= $currentPage === 'logs.php' ? 'class="nav-active"' : '' ?>>Logs</a>
             <a href="setup.php" <?= $currentPage === 'setup.php' ? 'class="nav-active"' : '' ?>>Setup</a>
         </div>
         <div class="nav-user">
