@@ -34,7 +34,13 @@ class AuthController extends Controller
             $error = 'Please fill in both fields.';
         } else {
             $user = $this->users->findByUsername($username);
-            if ($user && password_verify($password, $user['password'])) {
+
+            // Always run password_verify to prevent timing-based username enumeration.
+            // If no user was found, compare against a dummy hash so the work factor is identical.
+            $hash    = $user['password'] ?? '$2y$10$dummyhashusedtoconstanttimexxx..';
+            $correct = password_verify($password, $hash);
+
+            if ($user && $correct) {
                 session_regenerate_id(true);
                 $_SESSION['user_id']  = $user['id'];
                 $_SESSION['username'] = $user['username'];
