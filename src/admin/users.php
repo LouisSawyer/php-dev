@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/../lib/db.php';
 requireLogin();
 
 $success = '';
@@ -335,7 +335,7 @@ $currentUser = htmlspecialchars($_SESSION['username']);
     </style>
 </head>
 <body>
-    <?php include __DIR__ . '/nav.php'; ?>
+    <?php include __DIR__ . '/../lib/nav.php'; ?>
 <div class="container">
 
     <div class="top-bar">
@@ -380,7 +380,7 @@ $currentUser = htmlspecialchars($_SESSION['username']);
                         <td class="mono"><?= htmlspecialchars(substr($u['created_at'], 0, 10)) ?></td>
                         <td>
                             <div class="action-btns">
-                                <a href="users.php?edit=<?= (int)$u['id'] ?>" class="btn-edit">Edit</a>
+                                <a href="/admin/users.php?edit=<?= (int)$u['id'] ?>" class="btn-edit">Edit</a>
                                 <?php if (!$isSelf): ?>
                                     <form method="POST" onsubmit="return confirm('Delete user \'<?= htmlspecialchars($u['username'], ENT_QUOTES) ?>\'?')">
                                         <input type="hidden" name="action" value="delete">
@@ -423,7 +423,7 @@ $currentUser = htmlspecialchars($_SESSION['username']);
             </div>
             <div class="form-actions" style="margin-top:16px;">
                 <button type="submit" class="btn-submit">Save Changes</button>
-                <a href="users.php" class="btn-cancel">Cancel</a>
+                <a href="/admin/users.php" class="btn-cancel">Cancel</a>
             </div>
         </form>
     </div>
@@ -460,9 +460,9 @@ $currentUser = htmlspecialchars($_SESSION['username']);
     <?php endif; ?>
 
     <footer>
-        <a href="home.php">Dashboard</a>
-        <a href="index.php">Home</a>
-        <a href="logout.php">Logout</a>
+        <a href="/home.php">Dashboard</a>
+        <a href="/index.php">Home</a>
+        <a href="/logout.php">Logout</a>
     </footer>
 </div>
 </body>

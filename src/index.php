@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/lib/db.php';
 requireLogin();
 
 $host = getenv('MYSQL_HOST') ?: 'mysql';
@@ -140,7 +140,7 @@ if (isset($_GET['info'])) {
     </style>
 </head>
 <body>
-    <?php include __DIR__ . '/nav.php'; ?>
+    <?php include __DIR__ . '/lib/nav.php'; ?>
     <div class="container">
         <header>
             <h1>PHP Dev Environment</h1>

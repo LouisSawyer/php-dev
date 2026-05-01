@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/../lib/db.php';
 requireLogin();
 
 $message = '';
@@ -89,7 +89,7 @@ try {
     </style>
 </head>
 <body>
-    <?php include __DIR__ . '/nav.php'; ?>
+    <?php include __DIR__ . '/../lib/nav.php'; ?>
     <div class="card">
         <h1>Database Setup</h1>
         <?php if ($error): ?>
@@ -98,7 +98,7 @@ try {
             <div class="success"><?= htmlspecialchars($message) ?></div>
             <p class="info">Default credentials: <strong>admin</strong> / <strong>admin123</strong></p>
         <?php endif; ?>
-        <a href="login.php">Go to Login</a>
+        <a href="/login.php">Go to Login</a>
     </div>
 </body>
 </html>

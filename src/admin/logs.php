@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/../lib/db.php';
 requireLogin();
 
 $logFile = ini_get('error_log');
@@ -244,7 +244,7 @@ function classifyLine(string $line): string {
     </style>
 </head>
 <body>
-    <?php include __DIR__ . '/nav.php'; ?>
+    <?php include __DIR__ . '/../lib/nav.php'; ?>
     <div class="container">
         <div class="top-bar">
             <h1>Error Logs</h1>
@@ -274,7 +274,7 @@ function classifyLine(string $line): string {
                 </select>
                 <button type="submit" class="btn btn-primary">Apply</button>
                 <?php if ($filter !== ''): ?>
-                    <a href="logs.php?lines=<?= $requestedLines ?>" class="btn btn-ghost">Clear</a>
+                    <a href="/admin/logs.php?lines=<?= $requestedLines ?>" class="btn btn-ghost">Clear</a>
                 <?php endif; ?>
             </form>
         </div>

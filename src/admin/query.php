@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/../lib/db.php';
 requireLogin();
 
 $result = null;
@@ -210,7 +210,7 @@ try {
     </style>
 </head>
 <body>
-    <?php include __DIR__ . '/nav.php'; ?>
+    <?php include __DIR__ . '/../lib/nav.php'; ?>
     <div class="container">
         <h1>Query Runner</h1>
 

@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/lib/db.php';
 
 if (isLoggedIn()) {
-    header('Location: home.php');
+    header('Location: /home.php');
     exit;
 }
 
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
-            header('Location: home.php');
+            header('Location: /home.php');
             exit;
         } else {
             $error = 'Invalid username or password.';
@@ -158,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
         <div class="footer-link">
-            <a href="index.php">Back to dashboard</a>
+            <a href="/index.php">Back to dashboard</a>
         </div>
     </div>
 </body>

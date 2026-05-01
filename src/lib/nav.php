@@ -76,19 +76,19 @@
 <nav class="site-nav">
     <div class="nav-inner">
         <div class="nav-brand">
-            <a href="index.php">PHP Dev</a>
+            <a href="/index.php">PHP Dev</a>
         </div>
         <div class="nav-links">
-            <a href="index.php" <?= $currentPage === 'index.php' ? 'class="nav-active"' : '' ?>>Dashboard</a>
-            <a href="home.php" <?= $currentPage === 'home.php' ? 'class="nav-active"' : '' ?>>Server</a>
-            <a href="users.php" <?= $currentPage === 'users.php' ? 'class="nav-active"' : '' ?>>Users</a>
-            <a href="query.php" <?= $currentPage === 'query.php' ? 'class="nav-active"' : '' ?>>Query</a>
-            <a href="logs.php" <?= $currentPage === 'logs.php' ? 'class="nav-active"' : '' ?>>Logs</a>
-            <a href="setup.php" <?= $currentPage === 'setup.php' ? 'class="nav-active"' : '' ?>>Setup</a>
+            <a href="/index.php" <?= $currentPage === 'index.php' ? 'class="nav-active"' : '' ?>>Dashboard</a>
+            <a href="/home.php" <?= $currentPage === 'home.php' ? 'class="nav-active"' : '' ?>>Server</a>
+            <a href="/admin/users.php" <?= $currentPage === 'users.php' ? 'class="nav-active"' : '' ?>>Users</a>
+            <a href="/admin/query.php" <?= $currentPage === 'query.php' ? 'class="nav-active"' : '' ?>>Query</a>
+            <a href="/admin/logs.php" <?= $currentPage === 'logs.php' ? 'class="nav-active"' : '' ?>>Logs</a>
+            <a href="/admin/setup.php" <?= $currentPage === 'setup.php' ? 'class="nav-active"' : '' ?>>Setup</a>
         </div>
         <div class="nav-user">
             <span class="nav-username"><?= htmlspecialchars($_SESSION['username'] ?? '') ?></span>
-            <a href="logout.php" class="nav-logout">Logout</a>
+            <a href="/logout.php" class="nav-logout">Logout</a>
         </div>
     </div>
 </nav>

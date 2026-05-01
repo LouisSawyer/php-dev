@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/lib/db.php';
 requireLogin();
 
 $username = htmlspecialchars($_SESSION['username']);
@@ -173,7 +173,7 @@ function formatBytes($bytes): string
     </style>
 </head>
 <body>
-    <?php include __DIR__ . '/nav.php'; ?>
+    <?php include __DIR__ . '/lib/nav.php'; ?>
     <div class="container">
         <div class="top-bar">
             <h1>Server Dashboard</h1>
@@ -250,9 +250,9 @@ function formatBytes($bytes): string
         </div>
 
         <footer>
-            <a href="index.php">Dashboard</a>
-            <a href="users.php">User Management</a>
-            <a href="index.php?info">phpinfo()</a>
+            <a href="/index.php">Dashboard</a>
+            <a href="/admin/users.php">User Management</a>
+            <a href="/index.php?info">phpinfo()</a>
         </footer>
     </div>
 </body>
