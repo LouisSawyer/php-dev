@@ -29,6 +29,16 @@ class AuthController extends Controller
         $username = trim($_POST['username'] ?? '');
         $password = $_POST['password'] ?? '';
         $error    = '';
+        $ip       = $_SERVER['REMOTE_ADDR'] ?? '';
+
+        if ($this->logs->countRecentFailures($ip) >= 5) {
+            $this->render('auth/login', [
+                'pageTitle' => 'Login',
+                'hideNav'   => true,
+                'error'     => 'Too many failed attempts. Please wait 15 minutes and try again.',
+            ]);
+            return;
+        }
 
         if ($username === '' || $password === '') {
             $error = 'Please fill in both fields.';

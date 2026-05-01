@@ -39,6 +39,18 @@ class LogModel
         return $stmt->fetchAll();
     }
 
+    public function countRecentFailures(string $ip, int $minutes = 15): int
+    {
+        $stmt = $this->pdo->prepare(
+            "SELECT COUNT(*) FROM logs
+             WHERE event = 'login.failure'
+             AND ip = ?
+             AND created_at >= DATE_SUB(NOW(), INTERVAL ? MINUTE)"
+        );
+        $stmt->execute([$ip, $minutes]);
+        return (int)$stmt->fetchColumn();
+    }
+
     public function count(): int
     {
         return (int)$this->pdo->query("SELECT COUNT(*) FROM logs")->fetchColumn();
