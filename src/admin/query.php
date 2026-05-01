@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../lib/db.php';
+require_once __DIR__ . '/../lib/logger.php';
 requireLogin();
 
 $result = null;
@@ -28,9 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 $affected = $stmt->rowCount();
             }
+            logEvent($pdo, 'info', 'query.run', mb_substr($query, 0, 500), $_SESSION['user_id'], $_SESSION['username']);
         } catch (PDOException $e) {
             $error = $e->getMessage();
             $execTime = round((microtime(true) - $start) * 1000, 2);
+            logEvent($pdo, 'error', 'query.error', mb_substr($query, 0, 500) . ' | Error: ' . $e->getMessage(), $_SESSION['user_id'], $_SESSION['username']);
         }
     }
 }

@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../lib/db.php';
+require_once __DIR__ . '/../lib/logger.php';
 requireLogin();
 
 $message = '';
@@ -21,8 +22,10 @@ try {
         $hash = password_hash('admin123', PASSWORD_BCRYPT);
         $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
         $stmt->execute(['admin', 'admin@localhost', $hash]);
+        logEvent($pdo, 'info', 'setup.run', 'Setup run: users table created and admin seeded', $_SESSION['user_id'], $_SESSION['username']);
         $message = 'Setup complete. Users table created and default admin user seeded.';
     } else {
+        logEvent($pdo, 'info', 'setup.run', 'Setup run: already initialised', $_SESSION['user_id'], $_SESSION['username']);
         $message = 'Users table already exists and admin user is present. Nothing to do.';
     }
 } catch (PDOException $e) {

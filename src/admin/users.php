@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../lib/db.php';
+require_once __DIR__ . '/../lib/logger.php';
 requireLogin();
 
 $success = '';
@@ -25,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $hash = password_hash($password, PASSWORD_BCRYPT);
                 $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
                 $stmt->execute([$username, $email, $hash]);
+                logEvent($pdo, 'info', 'user.create', "Created user: $username", $_SESSION['user_id'], $_SESSION['username']);
                 $success = "User '" . htmlspecialchars($username) . "' created successfully.";
             } catch (PDOException $e) {
                 $error = ($e->getCode() == 23000)
@@ -55,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmt = $pdo->prepare("UPDATE users SET username=?, email=? WHERE id=?");
                     $stmt->execute([$username, $email, $id]);
                 }
+                logEvent($pdo, 'info', 'user.edit', "Edited user ID $id: $username", $_SESSION['user_id'], $_SESSION['username']);
                 $success = 'User updated successfully.';
             } catch (PDOException $e) {
                 $error = ($e->getCode() == 23000)
@@ -73,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 $stmt = $pdo->prepare("DELETE FROM users WHERE id=?");
                 $stmt->execute([$id]);
+                logEvent($pdo, 'warning', 'user.delete', "Deleted user ID $id", $_SESSION['user_id'], $_SESSION['username']);
                 $success = 'User deleted.';
             } catch (PDOException $e) {
                 $error = 'Failed to delete user.';

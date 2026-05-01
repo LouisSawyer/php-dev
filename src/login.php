@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/lib/db.php';
+require_once __DIR__ . '/lib/logger.php';
 
 if (isLoggedIn()) {
     header('Location: /home.php');
@@ -22,9 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
+            logEvent($pdo, 'info', 'login.success', '', $user['id'], $user['username']);
             header('Location: /home.php');
             exit;
         } else {
+            logEvent($pdo, 'warning', 'login.failure', "Failed login attempt for username: $username");
             $error = 'Invalid username or password.';
         }
     }
