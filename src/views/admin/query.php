@@ -43,7 +43,7 @@
 
         <div>
             <div class="card compact">
-                <h2>SQL Query</h2>
+                <h2>SQL Query <span style="font-weight:400; font-size:0.75rem; color:#4a5568; text-transform:none; letter-spacing:0;">— read-only (SELECT, SHOW, DESCRIBE, EXPLAIN)</span></h2>
                 <form method="POST" action="/admin/query">
                     <?= CsrfToken::field() ?>
                     <textarea name="query" id="queryInput" placeholder="SELECT * FROM users LIMIT 10;"><?= htmlspecialchars($query) ?></textarea>
@@ -54,7 +54,7 @@
             <?php if ($error): ?>
             <div class="card compact">
                 <h2>Error <?php if ($execTime !== null): ?><span style="font-weight:400;color:#4a5568;">(<?= $execTime ?>ms)</span><?php endif; ?></h2>
-                <div class="alert alert-error" style="font-family:monospace; font-size:0.82rem; word-break:break-all;"><?= htmlspecialchars($error) ?></div>
+                <div class="alert alert-error"><?= htmlspecialchars($error) ?></div>
             </div>
 
             <?php elseif ($isSelect && $result !== null): ?>
@@ -88,12 +88,6 @@
                     </table>
                 </div>
                 <?php endif; ?>
-            </div>
-
-            <?php elseif ($affected !== null): ?>
-            <div class="card compact">
-                <h2>Result <?php if ($execTime !== null): ?><span style="font-weight:400;color:#4a5568;">(<?= $execTime ?>ms)</span><?php endif; ?></h2>
-                <p class="affected-msg"><?= $affected ?> row<?= $affected !== 1 ? 's' : '' ?> affected.</p>
             </div>
             <?php endif; ?>
         </div>
