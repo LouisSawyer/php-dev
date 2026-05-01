@@ -8,7 +8,6 @@
             <div class="alert alert-error" style="font-family:monospace; font-size:0.8rem; word-break:break-all; text-align:left;"><?= htmlspecialchars($error) ?></div>
         <?php else: ?>
             <div class="alert alert-success"><?= htmlspecialchars($message) ?></div>
-            <p style="color:#6b7b9e; font-size:0.85rem; margin-bottom:16px;">Default credentials: <strong>admin</strong> / <strong>admin123</strong></p>
         <?php endif; ?>
         <a href="/login" style="color:#58a6ff; text-decoration:none; font-size:0.9rem;">Go to Login</a>
     </div>

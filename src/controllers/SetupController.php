@@ -51,7 +51,8 @@ class SetupController extends Controller
                 $message = 'Tables already exist and admin user is present. Nothing to do.';
             }
         } catch (PDOException $e) {
-            $error = $e->getMessage();
+            $this->logs->create('error', 'setup.error', $e->getMessage(), $_SESSION['user_id'], $_SESSION['username']);
+            $error = 'Setup failed. Check the activity logs for details.';
         }
 
         $this->render('admin/setup', [
