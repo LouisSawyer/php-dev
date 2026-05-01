@@ -40,6 +40,5 @@
 
     <footer>
         <a href="/server">Server Details</a>
-        <a href="/?info">phpinfo()</a>
     </footer>
 </div>

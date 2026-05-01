@@ -6,11 +6,6 @@ class HomeController extends Controller
     {
         $this->requireLogin();
 
-        if (isset($_GET['info'])) {
-            phpinfo();
-            exit;
-        }
-
         $host = getenv('MYSQL_HOST') ?: 'mysql';
         $db   = getenv('MYSQL_DATABASE') ?: 'app';
 

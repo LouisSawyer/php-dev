@@ -85,6 +85,5 @@ function formatServerBytes($bytes): string {
     <footer>
         <a href="/">Dashboard</a>
         <a href="/admin/users">User Management</a>
-        <a href="/?info">phpinfo()</a>
     </footer>
 </div>
