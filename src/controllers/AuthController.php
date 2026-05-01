@@ -35,6 +35,7 @@ class AuthController extends Controller
         } else {
             $user = $this->users->findByUsername($username);
             if ($user && password_verify($password, $user['password'])) {
+                session_regenerate_id(true);
                 $_SESSION['user_id']  = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $this->logs->create('info', 'login.success', '', $user['id'], $user['username']);
