@@ -16,14 +16,13 @@ class HomeController extends Controller
             $this->pdo->query("SELECT 1");
         } catch (PDOException $e) {
             $mysqlConnected = false;
-            $mysqlError     = $e->getMessage();
+            error_log('MySQL connection error: ' . $e->getMessage());
         }
 
         $this->render('home/index', [
             'pageTitle'      => 'Dashboard',
             'activeNav'      => 'dashboard',
             'mysqlConnected' => $mysqlConnected,
-            'mysqlError'     => $mysqlError,
             'dbName'         => $db,
             'dbHost'         => $host,
         ]);

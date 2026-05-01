@@ -75,6 +75,7 @@ class UserController extends Controller
             $this->logs->create('info', 'user.create', "Created user: $username", $_SESSION['user_id'], $_SESSION['username']);
             $_SESSION['flash'] = ['success' => "User '$username' created successfully."];
         } catch (PDOException $e) {
+            if ($e->getCode() != 23000) error_log('user.create error: ' . $e->getMessage());
             $msg = ($e->getCode() == 23000) ? 'Username or email already exists.' : 'Failed to create user.';
             $_SESSION['flash'] = ['error' => $msg];
         }
@@ -105,6 +106,7 @@ class UserController extends Controller
             $this->logs->create('info', 'user.edit', "Edited user ID $id: $username", $_SESSION['user_id'], $_SESSION['username']);
             $_SESSION['flash'] = ['success' => 'User updated successfully.'];
         } catch (PDOException $e) {
+            if ($e->getCode() != 23000) error_log('user.edit error: ' . $e->getMessage());
             $msg = ($e->getCode() == 23000) ? 'Username or email already exists.' : 'Failed to update user.';
             $_SESSION['flash'] = ['error' => $msg];
         }
@@ -128,6 +130,7 @@ class UserController extends Controller
             $this->logs->create('warning', 'user.delete', "Deleted user ID $id", $_SESSION['user_id'], $_SESSION['username']);
             $_SESSION['flash'] = ['success' => 'User deleted.'];
         } catch (PDOException $e) {
+            error_log('user.delete error: ' . $e->getMessage());
             $_SESSION['flash'] = ['error' => 'Failed to delete user.'];
         }
     }

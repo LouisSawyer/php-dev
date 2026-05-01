@@ -15,8 +15,8 @@
             </span>
         </div>
         <?php if (!$mysqlConnected): ?>
-            <div class="alert alert-error" style="margin-top:12px; font-family:monospace; font-size:0.8rem; word-break:break-all;">
-                <?= htmlspecialchars($mysqlError) ?>
+            <div class="alert alert-error" style="margin-top:12px;">
+                Could not connect to the database. Check the server logs for details.
             </div>
         <?php endif; ?>
     </div>
