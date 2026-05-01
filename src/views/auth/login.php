@@ -18,6 +18,7 @@
     <?php endif; ?>
 
     <form method="POST" action="/login">
+        <?= CsrfToken::field() ?>
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" autofocus>

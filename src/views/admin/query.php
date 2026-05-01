@@ -45,6 +45,7 @@
             <div class="card compact">
                 <h2>SQL Query</h2>
                 <form method="POST" action="/admin/query">
+                    <?= CsrfToken::field() ?>
                     <textarea name="query" id="queryInput" placeholder="SELECT * FROM users LIMIT 10;"><?= htmlspecialchars($query) ?></textarea>
                     <button type="submit" class="btn-run">Run Query</button>
                 </form>

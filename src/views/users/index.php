@@ -41,6 +41,7 @@
                                 <a href="/admin/users?edit=<?= (int)$u['id'] ?>" class="btn-edit">Edit</a>
                                 <?php if (!$isSelf): ?>
                                     <form method="POST" action="/admin/users" onsubmit="return confirm('Delete user \'<?= htmlspecialchars($u['username'], ENT_QUOTES) ?>\'?')">
+                                        <?= CsrfToken::field() ?>
                                         <input type="hidden" name="action" value="delete">
                                         <input type="hidden" name="id" value="<?= (int)$u['id'] ?>">
                                         <button type="submit" class="btn-delete">Delete</button>
@@ -59,6 +60,7 @@
     <div class="card">
         <h2>Edit User &mdash; <?= htmlspecialchars($editUser['username']) ?></h2>
         <form method="POST" action="/admin/users">
+            <?= CsrfToken::field() ?>
             <input type="hidden" name="action" value="edit">
             <input type="hidden" name="id" value="<?= (int)$editUser['id'] ?>">
             <div class="form-grid">
@@ -86,6 +88,7 @@
     <div class="card">
         <h2>Add New User</h2>
         <form method="POST" action="/admin/users">
+            <?= CsrfToken::field() ?>
             <input type="hidden" name="action" value="add">
             <div class="form-grid">
                 <div class="form-group">

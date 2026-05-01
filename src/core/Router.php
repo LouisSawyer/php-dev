@@ -28,6 +28,12 @@ class Router
             return;
         }
 
+        if ($method === 'POST' && !CsrfToken::verify()) {
+            http_response_code(403);
+            echo '<!DOCTYPE html><html><body style="font-family:sans-serif;padding:40px"><h1>403 Forbidden</h1><p>Invalid or missing CSRF token.</p></body></html>';
+            return;
+        }
+
         $handler();
     }
 }
